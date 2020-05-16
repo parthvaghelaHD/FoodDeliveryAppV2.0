@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="css/custom.css" type="text/css">
+    <title>menu </title>
+</head>
+<body class="container-fluid">
+    <div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarTogglerDemo01"
+          aria-controls="navbarTogglerDemo01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <form class="form-inline my-2 my-lg-0">
+            <a class="navbar-brand" href="/dashbord">FDA</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="/post/user">View My Posts</a>
+              </li> -->
+              <li class="nav-item" style="padding-right: 800px;">
+                <a class="nav-link" href="/user/offers">Offers</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="/user/about"> About </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/contact"> Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/help"> help ?</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/user/logout"> Logout</a>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+    <div class="mt-3 p-2 grad row">
+        <div class="col-sm-2" >
+            <img src="images/thakar-img.jpg" alt="Hotel Image" class="img-thumbnail hotelCss">
+        </div>
+        <div class="col-sm-10 mt-4">
+            <h1>Subway </h1>
+            <h4> &#10146; Race Course Plaza Shop No. 8 & 9, Race Course Rd, Race Course, Sadar, Rajkot, Gujarat 360001 </h4>
+        </div>
+    </div>
+    <div class="row mt-2 p-2">
+        <div class="col-sm-2 box form-control text-center">
+            <img src="images/logo.png" alt="Logo" class="img-thumbnail logoImg">
+            <h1>F</h1>
+            <h1>0</h1>
+            <h1>0</h1>
+            <h1>D</h1><br><br>
+            <h1>D</h1>
+            <h1>E</h1>
+            <h1>L</h1>
+            <h1>I</h1>
+            <h1>V</h1>
+            <h1>E</h1>
+            <h1>R</h1>
+            <h1>Y</h1><br><br>
+            <h1>A</h1>
+            <h1>P</h1>
+            <h1>P</h1>
+        </div>
+        <div class="col-sm-7 border-right data">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card">
+                        <img src="images/veg-bir.jpg" alt="Grand Gujrati Thali" class="card-img-top mb-2 shop-item-image img-thumbnail">
+                        <div class="card-body" >
+                            <h4 class="shop-item-title card-title">Veg Biryani</h4>
+                            <small class="shop-item-details card-text">Biryani, Chass, Salad</small>
+                            <p class="shop-item-price">119 /- </p>
+                        </div>
+                        <div class="d-flex justify-content-center pb-4">
+                            <input type="button" class="btn btn-primary  shop-item-button" value="Add to cart">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <img src="images/ghughra.jpg" alt="Ghughra" class="card-img-top shop-item-image img-thumbnail">
+                        <div class="card-body" >
+                            <h4 class="shop-item-title card-title">Ghughra</h4>
+                            <small class="shop-item-details card-text">Ghughra, Chatni </small>
+                            <p class="shop-item-price">75 /- </p>
+                        </div>
+                        <div class="d-flex justify-content-center pb-4">
+                            <input type="button" class="btn btn-primary  shop-item-button" value="Add to cart">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 cart-bg">
+            <section class="container-fluid content-section">
+                <h2 class="section-header">&#8659; <u>YOUR CART</u></h2>
+                <div class="cart-row">
+                    <p class="cart-item cart-header cart-column"></p>
+                    <p class="cart-price cart-header cart-column"></p>
+                    <span class="cart-quantity cart-header cart-column"></span>
+                </div>
+                <div class="cart-items">
+                </div>
+                <div class="cart-total my-3">
+                    <h2 class="cart-total-title badge badge-dark" style="font-size: 20px;">Sub Total
+                    <span id="id_price" class="cart-total-price badge badge-light">&#8377;0</span>
+                    </h2>
+                </div>
+
+                <form action="/charge" method="POST">
+                    <script
+                      src="https://checkout.stripe.com/checkout.js"
+                      class="stripe-button"
+                      data-key="<%= stripePublishableKey %>"
+                      data-amount="Pay"
+                      data-name="FDA Purchase"
+                      data-description="FDA"
+                      data-image="/images/foodpic.jpg"
+                      data-locale="auto"
+                    >
+                    </script>
+                    <script>
+                      document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+                    </script>
+                    <center>
+                      <button style="margin: 50px;" type="submit" class="btn btn-success btn-lg"> Purchase </button>
+                    </center>
+                  </form>  
+
+                <!-- <button class="btn btn-success btn-purchase" type="button">PAY NOW</button> -->
+            </section>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/AddToCart.js" ></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+</body>
+</html>
