@@ -24,7 +24,7 @@ $ run at : 127.0.0.1:5000
 ## Setup
 Once you clone or download project go into you folder
 > create a .env file
- >create a keys_dev.js file
+ >create a keys_dev.js file in cofig folder
  >npm install (it will install all the dependencies required for the project)
  
 #### .env file
