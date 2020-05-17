@@ -13,7 +13,7 @@ router.post('/user/register', userController.addUser);
 
 // get home page without login and after login dashbord page
 router.get('/', userController.getHome)
-router.get('/dashbord', userController.dashbord)
+router.get('/dashbord', verifyToken, userController.dashbord)
 
 //get pages
 router.get('/user/about', verifyToken , userController.about);
@@ -28,13 +28,11 @@ router.get('/MenuForRedPepperRestaurant', verifyToken ,userController.MenuForRed
 router.get('/MenuForAppleBite', verifyToken ,userController.MenuForAppleBite);
 router.get('/MenuAmrutRestaurant', verifyToken ,userController.MenuAmrutRestaurant);
 router.get('/MenuForLordsBanquetRestaurant', verifyToken ,userController.MenuForLordsBanquetRestaurant);
-
+// payment charge
 router.post('/charge', userController.charge );
-
 // get login page and post login data
 router.get('/user/login', userController.getlogin);
 router.post('/user/login', userController.authenticate)
-
 //authenticate and get logout page 
 router.post('/user/authenticate', userController.authenticate);  
 router.get('/user/logout', userController.logout);

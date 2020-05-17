@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const keys = require('../config/keys');
 const Payment = require('../model/payment');
 const stripe = require('stripe')(keys.stripeSecretKey);
-const { sendWelcomeEmail } = require('../email/account');
+const { sendWelcomeEmail , sendCanformationEmail } = require('../email/account');
 
 const blogUser = require("../model/userModel");
 const restaurant = require('../model/restaurant')
@@ -56,7 +56,7 @@ async function charge(req, res) {
     }))
     const addUser = new Payment({email : req.body.stripeEmail , amount })
     addUser.save();
-    console.log(addUser)
+    sendCanformationEmail(req.body.stripeEmail);
     res.render('success');
   }catch(err){
       console.log(err)
@@ -158,7 +158,6 @@ function cookiesVerify(req, res, token) {
 
 //authenticate user
 async function authenticate(req, res) {
-   console.log(req.body)
   try {
     const user = await blogUser.findOne(
       { userName: req.body.userName }
@@ -177,8 +176,8 @@ async function authenticate(req, res) {
   }
 }
   else{
-    console.log('User not found') ;
-    res.redirect('/user/login') 
+    req.flash('Error', "User not found ...!!")
+    res.redirect('/user/login');
     }
   } catch (err) {
     res.redirect("/user/login");

@@ -12,14 +12,14 @@ const sendWelcomeEmail = (email, name) => sgMail.send({
   text:  ` Successfully ${name} your account is created. You are now eligible for ordering an food and enjoy your testy food , and order with Awsome restaurants with very fast delevery. Thanks for connected !! Stay Home , Stay Safe`
 });
 
-const sendCancelationEmail = (email, name) => sgMail.send({
+const sendCanformationEmail = (email) => sgMail.send({
   to: email,
   from: 'parthvaghelahd@gmail.com',
-  subject: 'Sorry to see you from FDA ...!',
-  text:  ` Successfully your account is deleted , Good Bye ${name}. You are now not eligible for ordering an food. Stay Home , Stay Safe`
+  subject: 'Your order Successfully Conform ...!',
+  text:  'You will get your order as soon as possible. Thanks for using our service. Stay Home , Stay Safe'
 });
 
 module.exports = {
   sendWelcomeEmail,
-  sendCancelationEmail
+  sendCanformationEmail
 }
