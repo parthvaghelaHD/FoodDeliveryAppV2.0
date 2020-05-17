@@ -5,7 +5,6 @@ const keys = require('../config/keys');
 const Payment = require('../model/payment');
 const stripe = require('stripe')(keys.stripeSecretKey);
 const { sendWelcomeEmail } = require('../email/account');
-// require('../email/account')
 
 const blogUser = require("../model/userModel");
 const restaurant = require('../model/restaurant')
@@ -136,8 +135,6 @@ function thanks(req, res) {
 
 //register User
 async function addUser(req, res) {
-  
-  console.log(req.body)
   let addUser = new blogUser(req.body);
   try {
     addUser.save();
@@ -164,9 +161,9 @@ async function authenticate(req, res) {
    console.log(req.body)
   try {
     const user = await blogUser.findOne(
-      { userName: req.body.userName, password: req.body.password },
-      { password: 0 }
+      { userName: req.body.userName }
     );
+    if(user){
       try{
       jwt.sign({ user }, process.env.SECRET_KEY, function(err, token) {
         if (token) {
@@ -174,9 +171,14 @@ async function authenticate(req, res) {
         }
       });
     }
-      catch(e) {
+    catch(e) {
       console.log(e)
       res.redirect("/user/login" );
+  }
+}
+  else{
+    console.log('User not found') ;
+    res.redirect('/user/login') 
     }
   } catch (err) {
     res.redirect("/user/login");
