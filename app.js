@@ -7,14 +7,15 @@ const cookieParser = require('cookie-parser');
 const ejs = require('ejs')
 const bodyParser = require('body-parser');
 const flash = require('req-flash');
-require('dotenv').config();
+const keys = require('./config/keys')
+// require('dotenv').config();
 //required all routes
 const router = require('./routes/routes');
 
 const app = express();
 
 mongoose.connect(
-  process.env.mongoURL,
+  keys.mongoURL,
   {
     useCreateIndex : true,
     useNewUrlParser: true,

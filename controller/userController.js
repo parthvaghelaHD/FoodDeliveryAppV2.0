@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
+// require("dotenv").config();
 const bcrypt = require('bcryptjs');
 const keys = require('../config/keys');
 const Payment = require('../model/payment');
@@ -164,7 +164,7 @@ async function authenticate(req, res) {
     );
     if(user){
       try{
-      jwt.sign({ user }, process.env.SECRET_KEY, function(err, token) {
+      jwt.sign({ user }, keys.SECRET_KEY, function(err, token) {
         if (token) {
           cookiesVerify(req, res, token);
         }
