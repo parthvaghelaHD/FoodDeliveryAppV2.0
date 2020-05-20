@@ -1,10 +1,11 @@
 const jwt = require('jsonwebtoken');
+const keys = require('../config/keys')
 require('dotenv').config();
 
 function verifyToken(req, res, next) {
   const headers = req.cookies.token;
   if (typeof headers != 'undefined') {
-    jwt.verify(headers, process.env.SECRET_KEY, (err, decode) => {
+    jwt.verify(headers, keys.SECRET_KEY, (err, decode) => {
       if (err) return res.status(401).send({ message: 'No token provided.' });
       // req.id = decode.user._id;
       req.user = decode.user.userName;
