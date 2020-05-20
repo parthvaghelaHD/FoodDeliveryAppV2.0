@@ -15,11 +15,11 @@ const router = require('./routes/routes');
 const app = express();
 
 mongoose.connect(
-  keys.mongoURL,
+  keys.mongoURL, 
   {
     useCreateIndex : true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology : true,
+    useNewUrlParser : true
   },
   (err, res) => {
     if (!err) {
