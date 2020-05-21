@@ -3,7 +3,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require('bcryptjs');
 const keys = require('../config/keys');
 const Payment = require('../model/payment');
-const stripe = require('stripe')(keys.stripeSecretKey);
+const Stripe = require('stripe')(keys.stripeSecretKey);
+Stripe.stripePublishableKey(keys.stripePublishableKey)
 const { sendWelcomeEmail , sendCanformationEmail } = require('../email/account');
 
 const blogUser = require("../model/userModel");
